@@ -160,14 +160,16 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 });
 
-// 监听来自 background.js 的消息
-chrome.runtime.onMessage.addListener(function(message) {
-  if (message.action === "updateButton") {
-      // 根据收到的状态更改按钮的背景图片
-      var button = document.getElementById("toggleButton");
-      button.style.backgroundImage = message.isEnabled ? "url('../icons/start.png')" : "url('../icons/stop.png')";
-  }
-});
+  // 监听来自 background.js 的消息
+  chrome.runtime.onMessage.addListener(function(message) {
+    if (message.action === "updateButton") {
+        // 根据收到的状态更改按钮的背景图片
+        var button = document.getElementById("toggleButton");
+        var startIcon = chrome.runtime.getURL("icons/start.png");
+        var stopIcon = chrome.runtime.getURL("icons/stop.png");
+        button.style.backgroundImage = message.isEnabled ? "url('" + startIcon + "')" : "url('" + stopIcon + "')";
+    }
+  });
 
 // 页面加载逻辑
 document.addEventListener("DOMContentLoaded", function () {
@@ -183,7 +185,9 @@ document.addEventListener("DOMContentLoaded", function () {
   chrome.storage.local.get(searchKey, function (result) {
     var isEnabled = result.isEnabled;
     var start_stopBtn=document.getElementById('toggleButton');
-    start_stopBtn.style.backgroundImage = isEnabled ? "url('../icons/start.png')":"url('../icons/stop.png')";
+    var startIcon = chrome.runtime.getURL("icons/start.png");
+    var stopIcon = chrome.runtime.getURL("icons/stop.png");
+    start_stopBtn.style.backgroundImage = isEnabled ? "url('" + startIcon + "')":"url('" + stopIcon + "')";
     if (result.savedURL) {
       //console.log(result.savedURL);
       updateUrlList(result.savedURL);

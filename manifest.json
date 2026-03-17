@@ -24,6 +24,12 @@
   "permissions":[
     "activeTab",
     "storage"
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": ["icons/*.png"],
+      "matches": ["<all_urls>"]
+    }
   ]
 }
 
