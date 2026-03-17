@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang=en>
+<script type="text/javascript" src="./options.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+  body {
+            width: 375px; /* 设置页面宽度为 300 像素 */
+        }
+  #urlListContainer {
+    max-height: 75px;
+    overflow-x: auto;
+    overflow-y: auto;
+    border: 1px solid #ccc;
+    padding: 1px;
+  }
+
+  #urlListContainer ul {
+    margin: 2px;
+    padding: 0;
+    margin-left: 4px;
+  }
+
+  #urlList {
+    padding: 0;
+    list-style-type: none;
+  }
+
+  #urlList li {
+    margin-bottom: 2px;
+  }
+
+  #urlInvalidMessage {
+    color: red;
+    margin-top: 2px;
+  }
+
+  #settingsContainer {
+    border: 1px double #000;
+    padding: 2px;
+    display: inline-block;
+    margin-top: 2px;
+  }
+  /* Flex布局，将按钮放在标题右侧 */
+  .title-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  /* 图标按钮样式 */
+  .icon-button {
+    width: 32px; /* 设置图标按钮的宽度 */
+    height: 32px; /* 设置图标按钮的高度 */
+    background-size: cover; /* 将背景图大小设置为覆盖 */
+    border: none; /* 去掉图标按钮的边框 */
+    cursor: pointer; /* 将鼠标样式设置为指针 */
+    margin-right: 10%; /* 设置按钮距离右侧的间距 */
+    border-radius: 50%; /* 将按钮变成圆形 */
+  }
+</style>
+
+<head>
+  <title>插件设置</title>
+</head>
+
+<body>
+  <div class="title-container">
+    <h1>插件设置</h1>
+    <!-- 启动/停止按钮 -->
+    <button id="toggleButton" class="icon-button"></button>
+  </div>
+
+  <!-- 输入URL的文本框 -->
+  <label for="urlInput">录入域名：</label>
+  <input type="url" id="urlInput" name="urlInput" placeholder="https://example.com">
+  <button id="addButton">添加URL</button>
+  <button id="cleanButton">清空</button>
+  <!-- 提示消息框 -->
+  <!-- <div id="urlInvalidMessage"></div>  -->
+  
+  <!-- URL展示列表 -->
+  <div id="urlListContainer">
+    <ul id="urlList"></ul>
+  </div>
+
+  <div id="settingsContainer">
+    <!-- 鼠标监听事件设置复选框 -->
+    <fieldset>
+      <legend>选择监听事件：</legend>
+      <label for="mouseMoveCheckbox">
+        <input type="checkbox" id="mouseMoveCheckbox" name="mouseEvents" value="mousemove"> 监听鼠标移动
+      </label><br>
+      <label for="mouseClickCheckbox">
+        <input type="checkbox" id="mouseClickCheckbox" name="mouseEvents" value="click"> 监听鼠标单击
+      </label><br>
+      <label for="mouseDoubleClickCheckbox">
+        <input type="checkbox" id="mouseDoubleClickCheckbox" name="mouseEvents" value="dblclick"> 监听鼠标双击
+      </label><br>
+      <label for="mouseScrollCheckbox">
+        <input type="checkbox" id="mouseScrollCheckbox" name="mouseEvents" value="scroll"> 监听鼠标滚轮
+      </label><br>
+    </fieldset>
+
+    <!-- 输入监听时间的文本框 -->
+    <label for="timeInput">刷新时间：</label>
+    <input type="number" id="minutesInput" name="minutesInput" min="1" placeholder="5">
+    <select id="timeUnitSelect">
+      <option value="seconds">秒</option>
+      <option value="minutes" selected>分钟</option>
+    </select>
+    
+    <!-- 保存按钮 -->
+    <button id="saveButton">保存设置</button>
+  </div>
+
+</body>
+
+
+</html>
