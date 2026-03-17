@@ -1,0 +1,30 @@
+{
+  "manifest_version": 3,
+  "name": "自动刷新网页",
+  "version": "1.2.1",
+  "description": "不配置无任何动作，需自行配置匹配的url、检测行为、刷新时间。通过url匹配生效的网页，根据定义的时间启动一个定时器，时间到达自动刷新。检测行为：检测到该行为定时器会从新计时。",
+  "action": {
+    "default_popup": "popup/options.html",
+    "default_icon": {
+      "128": "icons/cat.png"
+    }
+  },
+  "icons": {
+    "128": "icons/cat.png"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["*://*/*"],
+      "js": ["app.js"]
+    }
+  ],
+  "permissions":[
+    "activeTab",
+    "storage"
+  ]
+}
+
+
